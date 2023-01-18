@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+// Inisialisasi Node untuk doubly linked list
 struct node
 {
     int data;
@@ -9,13 +9,13 @@ struct node
     struct node * prev;
 };
 
-// Pointer head selalu menunjuk ke node paling kiri.
+// head bertujuan untuk menunjuk ke node paling awal
 struct node *head = NULL;
 
-// Pointer last selalu menunjuk ke node paling kanan.
+// last bertujuan untuk menunjuk ke node paling akhir
 struct node *last = NULL;
 
-
+// Mencetak list secara forward (awal ke akhir)
 void printForward(){
 
     struct node * temp = head;
@@ -28,8 +28,7 @@ void printForward(){
 
 }
 
-
-
+// Mencetak List secara backward (akhir ke awal)
 void printBackward(){
     struct node * temp = last;
     while (temp != NULL)
@@ -76,7 +75,7 @@ int main(){
   printf("Menampilkan Linked List secara forward: ");
   printForward();
   printf("\n");
-   printf("Menampilkan Linked List secara backward: ");
+  printf("Menampilkan Linked List secara backward: ");
   printBackward();
 
 
