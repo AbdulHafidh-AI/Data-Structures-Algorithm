@@ -21,7 +21,7 @@ void printForward(){
     struct node * temp = head;
     while (temp != NULL)
     {
-        printf("%d",temp->data);
+        printf("%d->",temp->data);
         temp = temp->next;
     }
     
@@ -33,7 +33,7 @@ void printBackward(){
     struct node * temp = last;
     while (temp != NULL)
     {
-        printf("%d", temp->data);
+        printf("%d->", temp->data);
         temp = temp->prev;
     }
     
