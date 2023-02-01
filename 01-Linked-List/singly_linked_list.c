@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 
+
 /* Linked List merupakan suatu struktur data yang terdiri dari suatu node yang saling berhubungan.
    Node menyimpan suatu data dan alamat pada node berikutnya.
 
@@ -36,6 +37,23 @@ void printLinkedListValue(struct node *temp){
 }
 
 
+// InsertAfter adalah operasi untuk menambahkan node setelah node tertentu pada linked list 
+
+void insertAfter(struct node *prev_node, int new_data){
+    // Melakukan alokasi memori untuk node baru
+    struct node *new_node = (struct node*)malloc(sizeof(struct node));
+
+    // Menaruh nilai pada node baru
+    new_node->data = new_data;
+
+    // Menghubungkan node baru dengan node berikutnya
+    new_node->next = prev_node->next;
+
+    // Menghubungkan node baru dengan node sebelumnya
+    prev_node->next = new_node;
+}
+
+
 int main(){
     // Initialize nodes
   struct node *head;
@@ -57,6 +75,10 @@ int main(){
   one->next = two;
   two->next = three;
   three->next = NULL;
+
+
+  // InsertAfter
+  insertAfter(two, 4);
 
   // Menghubungkan head dengan node pertama 
   head = one;
