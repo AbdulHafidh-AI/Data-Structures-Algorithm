@@ -29,8 +29,16 @@ struct node{
 void printLinkedListValue(struct node *temp){
     while (temp != NULL)
     {
-        printf("%d ", temp->data);
+        // Menampilkan nilai dari node dengan tanda panah (->) kecuali pada node terakhir
+        printf("%d -> ", temp->data);
+        // Menggeser pointer ke node berikutnya
         temp = temp->next;
+
+        // Jika node terakhir maka akan menampilkan NULL
+        if(temp == NULL){
+            printf("NULL \n");
+
+        }
 
     }
     
@@ -52,6 +60,27 @@ void insertAfter(struct node *prev_node, int new_data){
     // Menghubungkan node baru dengan node sebelumnya
     prev_node->next = new_node;
 }
+
+// deleteAfter adalah operasi untuk menghapus node setelah node tertentu pada linked list
+
+void deleteAfter(struct node *prev_node){
+    // Melakukan alokasi memori untuk node baru
+    struct node *temp = (struct node*)malloc(sizeof(struct node));
+
+    // Menghubungkan node baru dengan node berikutnya
+    temp = prev_node->next;
+
+    // Menghubungkan node baru dengan node sebelumnya
+    prev_node->next = temp->next;
+
+    // Menghapus node yang sudah tidak terhubung dengan linked list
+    free(temp);
+
+}
+
+
+
+
 
 
 int main(){
@@ -77,14 +106,31 @@ int main(){
   three->next = NULL;
 
 
-  // InsertAfter
-  insertAfter(two, 4);
+  
+
+
+
 
   // Menghubungkan head dengan node pertama 
   head = one;
 
+    // Menampilkan seluruh data pada linked list
+  printf("Linked List: ");
+  printLinkedListValue(head);
+
+    // InsertAfter
+  insertAfter(two, 4);
+
+    // Menampilkan seluruh data pada linked list
+  printf("Linked List: ");
+  printLinkedListValue(head);
+
+  // deleteAfter
+  deleteAfter(two);
+
 
   // Menampilkan seluruh data pada linked list
+  printf("Linked List: ");
   printLinkedListValue(head);
     
 }
