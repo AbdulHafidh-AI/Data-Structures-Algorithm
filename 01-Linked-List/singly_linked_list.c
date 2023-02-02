@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 
 
@@ -19,6 +20,25 @@ struct node{
     int data;
     struct node *next;
 };
+
+
+/*  
+  Untuk menampilkan nilai dari linked list kita akan menggunakan operasi yang bernama traverse dengan rekursif
+  
+*/
+
+void printLinkedListValueRecursive(struct node *temp){
+    // Jika node terakhir maka akan menampilkan NULL
+    if(temp == NULL){
+        printf("NULL \n");
+        return;
+    }
+
+    // Menampilkan nilai dari node dengan tanda panah (->) kecuali pada node terakhir
+    printf("%d -> ", temp->data);
+    // Menggeser pointer ke node berikutnya
+    printLinkedListValueRecursive(temp->next);
+}
 
 
 /*
@@ -79,6 +99,9 @@ void deleteAfter(struct node *prev_node){
 }
 
 
+// 
+
+
 
 
 
@@ -106,31 +129,42 @@ int main(){
   three->next = NULL;
 
 
-  
-
-
-
-
   // Menghubungkan head dengan node pertama 
   head = one;
 
     // Menampilkan seluruh data pada linked list
+  clock_t start, end;
+  double time_taken;
+  start = clock();
   printf("Linked List: ");
   printLinkedListValue(head);
+  end = clock();
+  time_taken = (double)(end - start) / CLOCKS_PER_SEC;
+  printf("\nWaktu yang dibutuhkan untuk menjalankan program ini adalah %f detik\n", time_taken);
 
-    // InsertAfter
-  insertAfter(two, 4);
+  //   // InsertAfter
+  // insertAfter(two, 4);
 
-    // Menampilkan seluruh data pada linked list
-  printf("Linked List: ");
-  printLinkedListValue(head);
+  //   // Menampilkan seluruh data pada linked list
+  // printf("Linked List: ");
+  // printLinkedListValue(head);
 
-  // deleteAfter
-  deleteAfter(two);
+  // // deleteAfter
+  // deleteAfter(two);
 
 
   // Menampilkan seluruh data pada linked list
   printf("Linked List: ");
   printLinkedListValue(head);
+
+
+  // Menampilkan seluruh data pada linked list dengan rekursif
+  start = clock();
+  printf("Linked List: ");
+  printLinkedListValueRecursive(head);
+  end = clock();
+  time_taken = (double)(end - start) / CLOCKS_PER_SEC;
+  printf("\nWaktu yang dibutuhkan untuk menjalankan program yang rekursif ini adalah %f detik\n", time_taken);
+
     
 }
