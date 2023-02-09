@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define UKURAN 5
 
-// Krn kita pkk stack dgn mengimplementasikan array, maka stack ini dpt diisi secara efisien dr indeks 0 hingga indeks UKURAN - 1, yaitu hingga indeks 7.
+// Karena kita menggunakan stack dengan mengimplementasikan array, maka stack ini dapat diisi secara efisien dr indeks 0 hingga indeks UKURAN - 1, yaitu hingga indeks 7.
 int stack[UKURAN];
 
 // Pointer top bernilai -1 krn di bhs C indeks pd array dimulai dr indeks 0.
